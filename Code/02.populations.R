@@ -43,6 +43,33 @@ densitymap
 plot(densitymap)
 points(bei, cex=.2)
 
+# colorRampPalette
+colorRampPalette(c("black", "red", "orange", "yellow"))(100)
+cl <- colorRampPalette(c("black", "red", "orange", "yellow"))(100)
+plot(densitymap, col=cl)
+# essai couleurs du tableau 
+new <- colorRampPalette(c("cyan2", "darkolivegreen1", "darkorange", "chocolate1"))(19)
+plot(densitymap, col=new)
 
+# multiframe
+par(mfrow=c(1,2)) # 1 row (deux encadrés pour les graphiques : ce sont densitymap et elev) and 2 COLONNES
+plot(densitymap)
+plot(elev) # apparaît la carte de densité à gauche PUIS l'élévation à droite
 
+par(mfrow=c(2,2)) # 2 encadrés et 2 colonnes
+plot(densitymap)
+plot(elev)
 
+par(mfrow=c(2,1)) # 2 row (deux encadrés) and 1 COLONNE
+plot(densitymap)
+plot(elev)
+
+par(mfrow=c(3,1)) # Trois encadrés and 1 COLONNE
+plot(densitymap)
+plot(elev)
+plot(bei)
+
+par(mfrow=c(3,3)) # Trois encadrés and 3 COLONNE (côte à côte)
+plot(densitymap)
+plot(elev)
+plot(bei)
