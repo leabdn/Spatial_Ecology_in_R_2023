@@ -35,4 +35,14 @@ plot(elevation)
 elevation2 <- bei.extra[[1]]
 plot(elevation2)
 
+# passing from points to a continuous surface
+bei
+plot(bei, cex=.5)
+density map <- density(bei)
+densitymap
+plot(densitymap)
+points(bei, cex=.2)
+
+
+
 
