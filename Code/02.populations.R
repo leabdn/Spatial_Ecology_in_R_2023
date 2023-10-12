@@ -56,20 +56,20 @@ par(mfrow=c(1,2)) # 1 row (deux encadrés pour les graphiques : ce sont densitym
 plot(densitymap)
 plot(elev) # apparaît la carte de densité à gauche PUIS l'élévation à droite
 
-par(mfrow=c(2,2)) # 2 encadrés et 2 colonnes
+par(mfrow=c(2,2)) # 2 encadrés par colonne et 2 colonnes
 plot(densitymap)
 plot(elev)
 
-par(mfrow=c(2,1)) # 2 row (deux encadrés) and 1 colonne
+par(mfrow=c(2,1)) # 2 row (deux encadrés) par colonne et 1 colonne
 plot(densitymap)
 plot(elev)
 
-par(mfrow=c(3,1)) # Trois encadrés and 1 colonne
+par(mfrow=c(3,1)) # Trois encadrés par colonne et 1 colonne
 plot(densitymap)
 plot(elev)
 plot(bei)
 
-par(mfrow=c(3,3)) # Trois encadrés and 3 colonnes (côte à côte)
+par(mfrow=c(3,3)) # Trois encadrés par colonne et 3 colonnes (côte à côte)
 plot(densitymap)
 plot(elev)
 plot(bei)
