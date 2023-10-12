@@ -76,7 +76,7 @@ points(présence, cex=.5)
 plot(precmap)
 points(présence, cex=.5) 
 
-
+AUTRE (REPRESENTER SPECIES)
 species[species$Occurrence == 1,]
 install.packages("rgdal", dependencies=T)
 library(rgdal) # species
