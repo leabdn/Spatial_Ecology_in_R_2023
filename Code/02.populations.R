@@ -60,16 +60,16 @@ par(mfrow=c(2,2)) # 2 encadrés et 2 colonnes
 plot(densitymap)
 plot(elev)
 
-par(mfrow=c(2,1)) # 2 row (deux encadrés) and 1 COLONNE
+par(mfrow=c(2,1)) # 2 row (deux encadrés) and 1 colonne
 plot(densitymap)
 plot(elev)
 
-par(mfrow=c(3,1)) # Trois encadrés and 1 COLONNE
+par(mfrow=c(3,1)) # Trois encadrés and 1 colonne
 plot(densitymap)
 plot(elev)
 plot(bei)
 
-par(mfrow=c(3,3)) # Trois encadrés and 3 COLONNE (côte à côte)
+par(mfrow=c(3,3)) # Trois encadrés and 3 colonnes (côte à côte)
 plot(densitymap)
 plot(elev)
 plot(bei)
