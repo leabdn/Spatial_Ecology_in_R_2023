@@ -1,4 +1,4 @@
-# Comment les espèces sont liées entre elles spatialement (dans un environnement) ?
+# Comment les espèces sont liées entre elles spatialement (dans un environnement) ? Ici, exemple pour la FLORE
 library(vegan) # package sur la Flore et ses fonctions (data, head, decorana) et dune = veg
 
 # Ouvrir les données et sélectionner celles que l'on souhaite afficher
