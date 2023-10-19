@@ -9,7 +9,7 @@ head (dune) # only the first 6 rows (6 premières colonnes)
 # Débuter la Detrended correspondence analysis (DCA) : méthode pour répondre à cette question
 ord <- decorana(dune) # Méthode DCA
 
-# Après avoir affiché ord (correspondances otrhogonales), on copie les données d'Axis lengths (pourcentage de chaque axe)
+# Après avoir affiché ord (correspondances otrhogonales), on copie les données d'Axis lengths (longueur de chaque axe)
 ldc1 = 3.7004
 ldc2 = 3.1166
 ldc3 = 1.30055
