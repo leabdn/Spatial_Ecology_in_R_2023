@@ -10,4 +10,4 @@ devtools::install_github("ducciorocchini/imageRy") # install.packages("imageRy")
 library(imageRy)
 
 # IMPORT AN IMAGE
-b2 <- im.import("sentinel.dolomites.b2.tif")
+b2 <- im.import("sentinel.dolomites.b2.tif") # b2 is the blue wavelength
