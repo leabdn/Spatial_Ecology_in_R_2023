@@ -1,15 +1,15 @@
-# Comment les espèces sont liées entre elles spatialement (dans un environnement) ? Ici, exemple pour la FLORE
+# COMMENT LES ESPECES SONT LIEES ENTRE ELLES SPATIALEMENT (DANS UN ENVIRONNEMENT) ? ICI, EXEMPLE POUR LA FLORE
 library(vegan) # package sur la Flore et ses fonctions (data, head, decorana) et dune = veg
 
-# Ouvrir les données et sélectionner celles que l'on souhaite afficher
+# OUVRIR LES DONNERS ET SELECTIONNER CELLES QUE L'ON SOUHAITE AFFICHER
 data(dune) # matrix of several plots with amount of individuals in each plot
 dune
 head (dune) # only the first 6 rows (6 premières colonnes)
 
-# Débuter la Detrended correspondence analysis (DCA) : méthode pour répondre à cette question
+# DEBUTER LE DETREND CORRESPONDENCE ANALYSIS (DCA) : METHODE POUR REPONDRE A CETTE QUESTION
 ord <- decorana(dune) # Méthode DCA
 
-# Après avoir affiché ord (correspondances otrhogonales), on copie les données d'Axis lengths (longueur de chaque axe)
+# APRES AVOIR AFFICHE ORD (CORRESPONDANCE ORTHOGONALES), ON COPIE LES DONNEES D'AXIS LENGHTS (LONGUEUR DE CHAQUE AXE)
 ldc1 = 3.7004
 ldc2 = 3.1166
 ldc3 = 1.30055
@@ -17,7 +17,7 @@ ldc4 = 1.47888
 
 total = ldc1 + ldc2 + ldc3 + ldc4
 
-# Percentage of range (intervalle) for each axis
+# PERCENTAGE OF RANGE (INTERVALLE) FOR EACH AXIS
 pldc1 = ldc1 * 100 / total
 pldc2 = ldc2 * 100 / total
 pldc3 = ldc3 * 100 / total
@@ -25,6 +25,6 @@ pldc4 = ldc4 * 100 / total
 
 pldc1 + pldc2
 
-# Afficher le plot (parcelle) avec ces données
+# AFFICHER LE PLOT (PARCELLE) AVEC CES DONNEES
 plot(ord)
 
