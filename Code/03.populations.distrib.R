@@ -2,6 +2,7 @@
 # SPECIES DISTRIBUTION MODELLING
 install.packages("sdm")
 install.packages("rgdal", dependencies=T)
+install.packages("terra")
 library(sdm)
 library (terra) # predictors
 library(rgdal) # species
