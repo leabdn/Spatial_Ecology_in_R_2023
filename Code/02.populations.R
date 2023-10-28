@@ -1,41 +1,38 @@
-# Code related to population ecology
-
-# A package is needed for point pattern analysis
-
+# CODE RELATED TO POPULATION ECOLOGY 
+# A PACKAGE IS NEEDED FOR POINT PATTERN ANALYSIS : SPATSTAT
 install.packages("spatstat")
 library(spatstat)
 
-# let's use the bei data :
-# data description
+# LET'S USE THE BEI DATA
+# DATA DESCRIPTION
 # https://cran.r-project.org/web/packages/spatstat/index.html
-
 bei
 
-# plotting the data
+# PLOTTING THE DATA
 plot(bei)
 
-# changing dimension - cex
+# CHANGING DIMENSION - CEX (TAILLE DU POINT)
 plot(bei, cex=0.5) # ou .5
 
-# changing the symbol - pch
+# CHANGING THE SYMBOL - PCH
 plot(bei, cex=.2, pch=19)
 
-# additional datasets
+# ADDITIONAL DATASETS
 bei.extra
 plot(bei.extra)
 
-# let's use only part of the dataset : elev ici
+# LET'S USE ONLY PART OF THE DATASET : elev ICI
 plot(bei.extra$elev)
 
-# change the name of the raster / graph
+# CHANGE THE NAME OF THE RASTER / GRAPH
 elevation <- bei.extra$elev
 plot(elevation)
 
-# second method to select elements
+# SECOND METHOD TO SELECT ELEMENTS 
 elevation2 <- bei.extra[[1]]
 plot(elevation2)
 
-# passing from points to a continuous surface
+# PASSING FROM POINTS TO A CONTINUOUS SURFACE
 bei
 plot(bei, cex=.5)
 density map <- density(bei)
@@ -44,14 +41,14 @@ plot(densitymap)
 points(bei, cex=.2)
 
 # colorRampPalette
-colorRampPalette(c("black", "red", "orange", "yellow"))(100)
 cl <- colorRampPalette(c("black", "red", "orange", "yellow"))(100)
 plot(densitymap, col=cl)
-# essai couleurs du tableau 
+
+# ESSAI COULEUR DU TABLEAU 
 new <- colorRampPalette(c("cyan2", "darkolivegreen1", "darkorange", "chocolate1"))(19)
 plot(densitymap, col=new)
 
-# multiframe
+# MULTIFRAME
 par(mfrow=c(1,2)) # 1 row (deux encadrés pour les graphiques : ce sont densitymap et elev) and 2 COLONNES
 plot(densitymap)
 plot(elev) # apparaît la carte de densité à gauche PUIS l'élévation à droite
