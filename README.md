@@ -2,6 +2,7 @@
 
 ## Professor
 Duccio Rocchini, president of the master program "Science and Management of Nature" in the University of Bologna
+Nominated expert by the European Commission and the European Space Agency for the Biodiversity sector
 
 ## Main scripts in this repo
 + Scripts on populations
