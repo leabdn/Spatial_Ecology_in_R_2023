@@ -1,4 +1,4 @@
-
+# 
 # OPEN THE DATA AND INSTALL THE PACKAGE "IMAGERY" FROM GITHUB
 library(devtools) # Packages in R are also called libraries
 install_github("ducciorocchini/imageRy")  # From devtools
