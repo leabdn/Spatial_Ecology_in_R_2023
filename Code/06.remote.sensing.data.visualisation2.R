@@ -1,4 +1,4 @@
-# 
+# INSTALLER LE PACKAGE - REMOVE SENSING FOR ECOSYSTEM MONITORING
 # OPEN THE DATA AND INSTALL THE PACKAGE "IMAGERY" FROM GITHUB
 library(devtools) # Packages in R are also called libraries
 install_github("ducciorocchini/imageRy")  # From devtools
@@ -28,6 +28,7 @@ plot(b8, col=cl)
 
 # MULTIFRAME (AFFICHAGE DE PLUSIEURS BANDES SUR UNE MEME FEUILLE, L'UNE APRES L'AUTRE)
 # AVANT, ON DOIT OUVRIR TOUTES LES BANDES COMME CI-DESSUS
+cl <- colorRampPalette(c("dark grey","grey","light grey")) (100)
 par(mfrow=c(2,2))
 plot(b2, col=cl)
 plot(b3, col=cl)
