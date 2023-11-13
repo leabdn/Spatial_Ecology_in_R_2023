@@ -37,7 +37,7 @@ plot(dvi1992, col=cl)
 # DVI2006
 dvi2006 = m2006[[1]] - m2006[[2]] # DVI = NIR - RED where bands: 1 = NIR, 2 = RED, 3 = GREEN
 dvi2006
-cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # specifying a color scheme
+cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a color scheme
 plot(dvi2006, col=cl)
 
 # DVI BY imageRy
