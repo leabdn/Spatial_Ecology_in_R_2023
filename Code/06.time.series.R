@@ -7,7 +7,7 @@ im.list()
 # IMPORT THE DATA (SENTINEL-5P NITROGEN DIOXIDE TROPOSPHERIC COLUMN IN THE WORLD)
 EN01 <- im.import("EN_01.png")
 EN13 <- im.import("EN_13.png")
-
+# En ajoutant les photos une par une, elles s'affichent l'une en dessous de l'autre, sinon, noter cela :
 par(mfrow=c(2,1)) # 2 ligns, 1 column
 im.plotRGB.auto(EN01)
 im.plotRGB.auto(EN13)
@@ -19,7 +19,7 @@ dif = EN01[[1]] - EN13[[1]] # Difference between
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 plot(dif, col=cldif)
 
-# NEW EXAMPLE : PLOT TEMPERATURE IN GREENLAND WITH A NEW COLORPALETTE
+# NEW EXAMPLE : PLOT TEMPERATURES IN GREENLAND WITH A NEW COLORPALETTE
 g2000 <- im.import("greenland.2000.tif")
 clg <- colorRampPalette(c("black", "blue", "white", "red")) (100)
 plot(g2000, col=clg)
@@ -31,7 +31,7 @@ par(mfrow=c(1,2))
 plot(g2000, col=clg)
 plot(g2015, col=clg)
 
-# STACKING THE DATA : PLOT THE 4 IMAGES AUTOMATICALLY
+# STACKING (EMPILER) THE DATA : PLOT THE 4 IMAGES AUTOMATICALLY
 stackg <- c(g2000, g2005, g2010, g2015)
 plot(stackg, col=clg)
 
@@ -40,5 +40,5 @@ difg <- stackg[[1]] - stackg[[4]]
 # difg <- g2000 - g2015
 plot(difg, col=cldif)
 
-# EXERCICE : MAKE A RGB PLOT USING DIFFERENT YEARS
+# EXERCICE : MAKE A RGB PLOT USING DATA WITH DIFFERENT YEARS
 im.plotRGB(stackg, r=1, g=2, b=3)
