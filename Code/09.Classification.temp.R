@@ -20,7 +20,7 @@ plotRGB(sun, 1, 2, 3) # Nombre de clusters (groupes) à afficher sur l'image
 plot(sunc)
 OU BIEN
 sunc <- im.classify(sun, num_clusters=3) # Nombre de clusters (groupes) à afficher sur l'image
-plot(sunc[[1]]) # Afficher la première image
+plot(sunc[[1]]) # Afficher le premier plot parmi tous ceux qui s'affichent
 
 # FORESTS (CLASSE 1) et AGRICULTURAL AREAS (CLASSE 2)
 m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
@@ -42,35 +42,28 @@ f1992
 tot1992 <- ncell(m1992c)
 p1992 <- f1992 * 100 / tot1992 
 p1992
-# LECTURE DES RESULTATS : forêt : 83.08% et champs : 16.91%
+# LECTURE DES RESULTATS : Forêt : 83.08% et Champs : 16.91%
 ---
 f2006 <- freq(m2006c)
 f2006
 tot2006 <- ncell(m2006c)
 p2006 <- f2006 * 100 / tot2006 
 p2006
-# LECTURE DES RESULTATS : forêt : 45.31% et champs : 54.69%
+# LECTURE DES RESULTATS : Forêt : 45.31% et Champs : 54.69%
 
-# 6. BUILDING THE FINAL TABLE
-class <- c("forest", "human")
-y1992 <- c(83, 17)
-y2006 <- c(45, 55) 
-tabout <- data.frame(class, y1992, y2006)
-tabout
-
-# 7. FINAL OUTPUT TABLE
-cover <- c("forest", "agriculture")
+# 6. BUILDING THE FINAL OUTPUT TABLE
+class <- c("forest", "agriculture")
 perc1992 <- c(83.08, 16.91)
 perc2006 <- c(45.31, 54.69)
-p <- data.frame(cover, perc1992, perc2006)
-p
+tabout <- data.frame(cover, perc1992, perc2006)
+tabout
 
-# FINAL PLOT
+# 7. FINAL PLOT
 p1 <- ggplot(tabout, aes(x=cover, y=perc1992, color=cover)) + geom_bar(stat="identity", fill="white")
 p2 <- ggplot(p, aes(x=cover, y=perc2006, color=cover)) + geom_bar(stat="identity", fill="white"))
 p1+p2
 
-# FINAL PLOT - RESCALED rescaled
+# FINAL PLOT - RESCALED
 p1 <- ggplot(p, aes(x=cover, y=perc1992, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
 p2 <- ggplot(p, aes(x=cover, y=perc2006, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
 p1+p2
