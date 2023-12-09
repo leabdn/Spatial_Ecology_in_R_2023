@@ -6,7 +6,7 @@ library(ggplot2)
 library(patchwork)
 im.list()
 # https://www.esa.int/ESA_Multimedia/Images/2020/07/Solar_Orbiter_s_first_views_of_the_Sun6
-# additional images: https://webbtelescope.org/contents/media/videos/1102-Video?Tag=Nebulas&page=1
+# Additional images: https://webbtelescope.org/contents/media/videos/1102-Video?Tag=Nebulas&page=1
 
 # 2. IMPORT THE DATA
 sun <- im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
