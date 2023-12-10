@@ -14,7 +14,7 @@ im.list()
 sun <- im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg") # Source de l'image : https://www.esa.int/ESA_Multimedia/Images/2020/07/Solar_Orbiter_s_first_views_of_the_Sun6
 
 # 3. CLASSIFY SATELLITE DATA (CLASSES DE VALEURS)
-# INTENSITE LUMINEUSE DU SOLEIL (ICI, 3 CLASSES CHOISIES DONC 3 ENTITES)
+# INTENSITE LUMINEUSE DU SOLEIL (ICI, 3 CLASSES CHOISIES DONC 3 CLUSTERS, QUI VEUT DIRE GROUPE)
 sunc <- im.classify(sun)
 plotRGB(sun, 1, 2, 3) # Nombre de clusters (groupes) à afficher sur l'image
 plot(sunc)
