@@ -55,8 +55,8 @@ p2006
 class <- c("forest", "agriculture")
 perc1992 <- c(83.08, 16.91)
 perc2006 <- c(45.31, 54.69)
-tabout <- data.frame(cover, perc1992, perc2006)
-tabout
+total <- data.frame(cover, perc1992, perc2006)
+total
 
 # 7. FINAL PLOT
 p1 <- ggplot(tabout, aes(x=cover, y=perc1992, color=cover)) + geom_bar(stat="identity", fill="white")
