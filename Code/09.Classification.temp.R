@@ -22,7 +22,7 @@ OU BIEN
 sunc <- im.classify(sun, num_clusters=3) # Nombre de clusters (groupes) à afficher sur l'image
 plot(sunc[[1]]) # Afficher le premier plot parmi tous ceux qui s'affichent
 
-# FORESTS (CLASSE 1) et AGRICULTURAL AREAS (CLASSE 2)
+# AGRICULTURAL AREAS (CLASSE 1) et FORESTS (CLASSE 2)
 m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
 m1992c <- im.classify(m1992, num_clusters=2)                    
 plot(m1992c[[1]])
