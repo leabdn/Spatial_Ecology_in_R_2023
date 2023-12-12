@@ -63,7 +63,7 @@ p1 <- ggplot(total, aes(x=class, y=perc1992, color=class)) + geom_bar(stat="iden
 p2 <- ggplot(total, aes(x=class, y=perc2006, color=class)) + geom_bar(stat="identity", fill="white")
 p1+p2
 
-# FINAL PLOT - RESCALED (AXIS Y HERE, xlim IS FOR AXIS X)
+# FINAL PLOT - RESCALED (AXIS Y HERE, xlim IS FOR AXIS X) : HAVE TWO DIAGRAMMS WITH THE SAME AXIX SCALE
 p1 <- ggplot(total, aes(x=class, y=perc1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
 p2 <- ggplot(total, aes(x=class, y=perc2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
 p1+p2
