@@ -3,91 +3,114 @@
 + Layout (disposition) : header (en-tête)
 + Figures
 + Bibliography
++ AVAILABLE ONLINE, ON THE WEBSITE : https://www.overleaf.com/project
 
-# EXAMPLE OF THE PROFESSOR
-% lisjglsdjnjdfgil this is not read, no worries!
-
-% [] for structures!
-
-\documentclass[a4paper, 12pt]{article}
+# EXAMPLE OF THE PROFESSOR (WITH MY EXPLANATIONS)
+\documentclass[a4paper, 12pt]{article} % Size
 \usepackage{graphicx} % Required for inserting images
-\usepackage{lineno}
-\usepackage{hyperref}
-\usepackage{natbib}
-\usepackage{color}
-\linenumbers
-\newcommand{\tb}{\textcolor{blue}}
-\linespread{1.5}
+\usepackage{lineno} % Use linenumbers
+\usepackage{hyperref} % Click on a reference and go here
+\usepackage{natbib} % Customize citations
+\usepackage{color} % Use textcolor
+\linenumbers % Number of lines
+\newcommand{\tb}{\textcolor{blue}} % Text color
+\linespread{1.5} % Interligne
 
 \title{First paper in Physalia}
-\author{Duccio Rocchini $^1$}
+\author{Duccio Rocchini $^1$} % Reference
 \date{ } 
-
-% TeXLive
-% kile
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+\maketitle % Print title and author
 
-\maketitle
+$^1$ UNIBO - via Irnerio.... % Cite the reference
 
-$^1$ UNIBO - via Irnerio....
-
-\tableofcontents
-
+\tableofcontents % Table des matières
 \begin{abstract}
 The house stood on a slight rise just on the edge of the village. It stood on its own and looked out over a broad spread of West Country farmland. Not a remarkable house by any means—it was about thirty years old, squattish, squarish, made of brick, and had four windows set in the front of a size and proportion which more or less exactly failed to please the eye.
 \end{abstract}
 
-\section{Introduction} % sections with no numbers
+\section{Introduction} % Sections with no numbers
 
-\tb{The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in.} As we will see in Section \ref{sec:methods}, he had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. \tb{He was about thirty as well}, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
+\tb{The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in.}  As we will see in Section \ref{sec:methods}, he had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. \tb{He was about thirty as well}, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
+% \tb{...} is to colour a text according to \newcommand{\tb}{\textcolor{blue}}
+% Skip a lign to begin a new paragraph
 
-The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in. He had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. He was about thirty as well, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
+\smallskip % Ligne vierge avant et après
 
-\section{Methods}\label{sec:methods}
-\subsection{Study area} % itemize
+The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in. He had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. He was about thirty as well, tall, dark-haired and never quite at ease with himself. 
+
+\smallskip % Ligne vierge avant et après
+
+The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
+
+\section{Methods}\label{sec:methods} % Donner une étiquette
+\subsection{Study area} % Itemize (détailler)
 The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about (Figure \ref{fig:brenta}). He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising (Figure \ref{fig:lake}).
+% (Figure \ref{fig:brenta}) is to make a click reference at an image, a diagramm
 
-\noindent The main characteristics of the study area are:
-\begin{itemize}
+\noindent The main characteristics of the study area are :
+\begin{itemize} % Ajouter une puce point
     \item Elevation: 3000 meters
     \item Precipitations: n mm per year
     \item Meam Annual Temperature: 12 degrees
 \end{itemize}
 
 \noindent The main characteristics of the study area are:
-\begin{enumerate}
+\begin{enumerate} % Ajouter une puce numérotée
     \item Elevation: 3000 meters
     \item Precipitations: n mm per year
     \item Meam Annual Temperature: 12 degrees
 \end{enumerate}
 
 \subsection{Statistical analysis}
-The calculation done in this manuscript can be viewed in Equation \ref{eq:newton}.
+The calculation done in this manuscript can be viewed in Equation \ref{eq:newton}. % Faire la référence "Equation 1"
 
 \begin{equation}
-    F = \sqrt[3]{G \times \frac{m_1 \times m_2}{r^2}}
-    \label{eq:newton}
+    F = \sqrt[3]{G \times \frac{m_1 \times m_2}{r^2}} 
+    \label{eq:newton} % Faire la référence "Equation 1"
+\end{equation}
+
+\begin{equation} % See "Latex maths" on internet
+    F = G \frac{m_1 m_2}{d2} % {nominateur}{denominateur}
+\end{equation}
+
+\begin{equation}
+     F = G \times \frac{m_1 \times m_2}{d^2} %\times = X
+\end{equation}
+
+\begin{equation}
+    F = \sqrt{G \times \frac{m_1 \times m_2}{d^2}}
+\end{equation}
+
+\begin{equation}
+    F = \sqrt[3]{G \frac{m_1 m_2}{d^2}} %\sqrt = racine carrée
 \end{equation}
 
 \section{Results}
 
-The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in. He had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. He was about thirty as well, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
+The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in. He had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. 
 
+\bigskip % Ligne vierge avant et après
+
+He was about thirty as well, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising.
 
 \section{Discussion}
 The only person for whom the house was in any way special was Arthur Dent, and that was only because it happened to be the one he lived in. He had lived in it for about three years, ever since he had moved out of London because it made him nervous and irritable. He was about thirty as well, tall, dark-haired and never quite at ease with himself. The thing that used to worry him most was the fact that people always used to ask him what he was looking so worried about. He worked in local radio which he always used to tell his friends was a lot more interesting than they probably thought. It was, too—most of his friends worked in advertising \citep{yoccoz2001}.
+% To cite an author and create the link with the bibliography : \citep{codedecictation}
 
 \begin{thebibliography}{999}
-    \bibitem[Yoccoz et al.(2021)]{yoccoz2001}
+    \bibitem[Yoccoz et al.(2021)]{yoccoz2001} % Fait la réf. dans le texte : [cequilfautciter] {codedecitation}
     Yoccoz, N. G., Nichols, J. D., \& Boulinier, T. (2001). Monitoring of biological diversity in space and time. Trends in Ecology \& Evolution, 16(8), 446-453.
 \end{thebibliography}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{dolbr.jpg}
-    \caption{This is a sketch of the Brenta mountain.}
-    \label{fig:brenta}
+\begin{figure} % For each figure
+    \centering % Centrer l'image
+    \includegraphics[width=\textwidth]{dolbr.jpg} % Add figure
+    \caption{This is a sketch of the Brenta mountain.} 
+    % Description de l'image
+    \label{fig:brenta} % Do link with the figure in the doc.
 \end{figure}
 
 \begin{figure}
@@ -98,5 +121,3 @@ The only person for whom the house was in any way special was Arthur Dent, and t
 \end{figure}
 
 \end{document}
-
-# MY EXAMPLE
