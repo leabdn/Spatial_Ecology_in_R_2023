@@ -1,1 +1,33 @@
+# PROBLEMATIC CHOSEN
+# To what extent does the creation of ecological corridors (rivers) affect the presence of Aeshna affinis in the Centre-Val-de-Loire french region ?
+Impact of urbanization on the 
+
+# STEP 1. OPEN THE CSV FILE IN R STUDIO (AESHNA AFFINIS OBSERVATIONS)
+install.packages("rio")
+library(rio)
+path <- "C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION/data_Aeshna_affinis.xlsx"
+data <- import_list(path)
+print (data)
+
+# STEP 2. OPEN THE SHP FILE IN R STUDIO (RIVERS)
+install.packages("sdm")
+library(sdm)
+shpfile <- system.file("external/Corridors_terrestres_et_aquatiques.shp", package="sdm")
+shpfile
+
+
+# STEP 3. ANALYSE THE POPULATION DISTRIBUTION
+install.packages("SDM")
+install.packages("RGDAL")
+install.packages("TERRA")
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+install.packages("readr")
+library(readr)
+mysource <- "C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION"
+file = paste0(mysource,"data_Aeshna_affinis_csv")
+header = TRUE
+sep = ",",
+stringsAsFactors = TRUE
+str("data_Aeshna_affinis_csv")
 
