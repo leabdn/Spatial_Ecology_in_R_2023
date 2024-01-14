@@ -2,14 +2,40 @@
 # To what extent does the creation of ecological corridors (rivers) affect the presence of Aeshna affinis in the Centre-Val-de-Loire french region ?
 Impact of urbanization on the 
 
-# STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
+# STEP 1. CALCULATE THE NDVI OF THE RASTER
+install.packages("ggplot2") # Use colours scales
+install.packages("viridis") # Make the plot more aesthetic
+install.packages("devtools")
+install.packages("htmltools") # Have the last version of devtools
 install.packages("terra")
+library(ggplot2) 
+library(viridis)
+library(devtools)
+library(htmltools)
 library(terra)
+devtools::install_github("ducciorocchini/imageRy")
+library(imageRy)
 setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
 recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
-plotRGB(recentjpg, r=1, g=2, b=3)
+redband <- im.plotRGB(recentjpg, 1, 2, 3) # Red band
+blueband <- im.plotRGB(recentjpg, 2, 3, 1) # Blue band
+greenband <- im.plotRGB(recentjpg, 2, 1, 3) # Green band
+# CALCULATE OF THE DVI
+dvi2023 = recentjpg[[1]] - recentjpg [[2]]
+dvi2023
+cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Plot a colour scheme for the DVI
+plot(dvi2023, col=cl)
+# CALCULATION OF THE NDVI
+ndvi2023 = (recentjpg[[1]] - recentjpg[[2]]) / (recentjpg[[1]] + recentjpg[[2]]) # (NIR-RED) / (NIR+RED)
+ndvi2023
+plot(ndvi2023, col=cl)
 
-# STEP 1. OPEN THE Aeshna affinis DATA (SHAPE FILE OF ITS OCCURENCE)
+# STEP 2. CALCULATION OF THE NDWI
+ndwi2023 = (recentjpg[[3]] - recentjpg[[1]]) / (recentjpg[[3]] + recentjpg[[1]])
+ndwi2023
+plot(ndwi2023, col = cl)
+
+# STEP 3. OPEN THE Aeshna affinis DATA (SHAPE FILE OF ITS OCCURENCE) ON THE RASTER
 install.packages("sdm")
 install.packages("rgdal", dependencies=T) # Not available from the end of 2023
 install.packages("terra")
@@ -21,24 +47,17 @@ Aeshna <- vect(file) # Insert the shape file
 Aeshna # Informations about geometry data of Aeshna
 plot(Aeshna) # Plot the presence (points) of Aeshna
 
-# STEP 2. CALCULATE THE DVI AND NDVI OF THE RASTER CORRESPONDANT
-install.packages("ggplot2") # Use colours scales
-install.packages("viridis") # Make the plot more aesthetic
-library(ggplot2) 
-library(viridis)
-dvi2023 = recentjpg[[1]] - recentjpg [[2]]
-dvi2023
-cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
-plot(dvi2023, col=cl)
+# STEP 4. CORRELATIONS BETWEEN INDICES AND OCCURENCE OF Aeshna affinis (during the oral)
 
-# STEP 3. CALCULATE THE DVI AND NDVI SENTINEL-2 RASTER CORRESPONDANT
+-------------------------------------------------------------------------------------------------------------------------
+
+# STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
 install.packages("terra")
 library(terra)
 setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
 recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
 plotRGB(recentjpg, r=1, g=2, b=3)
 
--------------------------------------------------------------------------------------------------------------------------
 # STEP 1. OPEN THE CSV FILE IN R STUDIO (AESHNA AFFINIS OBSERVATIONS)
 install.packages("rio")
 library(rio)
@@ -76,6 +95,23 @@ dvi2023
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
 plot(dvi2015, col=cl)
 plot(dvi2023, col=cl)
+
+# CALCULATE THE NDWI
+install.packages("raster")
+install.packages("rgdal")
+library (raster)
+library (rgdal)
+path <- system.file ("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA/NDWI", package = "ASIP") # Path to access at recentjpg
+shapefile <- paste0 (path, "/test.shp")
+ndwi2023 <- ndwi (directory = path, crop = "y", ext2crop = shapefile)
+# (BIRGHTNESS INDEX), BI = root((Red²+Green²)/2)
+x1 <- recentjpg[[1]] # NIR
+y1 <- 2
+x1^y1
+x2 <- recentjpg[[3]] # GREEN
+y2 <- 2
+y1^y2
+# The power
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 rastfile <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA")
