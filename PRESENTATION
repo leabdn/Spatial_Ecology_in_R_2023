@@ -20,14 +20,9 @@ recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.j
 redband <- im.plotRGB(recentjpg, 1, 2, 3) # Red band
 blueband <- im.plotRGB(recentjpg, 2, 3, 1) # Blue band
 greenband <- im.plotRGB(recentjpg, 2, 1, 3) # Green band
-# CALCULATE OF THE DVI
-dvi2023 = recentjpg[[1]] - recentjpg [[2]]
-dvi2023
-cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Plot a colour scheme for the DVI
-plot(dvi2023, col=cl)
-# CALCULATION OF THE NDVI
 ndvi2023 = (recentjpg[[1]] - recentjpg[[2]]) / (recentjpg[[1]] + recentjpg[[2]]) # (NIR-RED) / (NIR+RED)
 ndvi2023
+cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
 plot(ndvi2023, col=cl)
 
 # STEP 2. CALCULATION OF THE NDWI
@@ -117,6 +112,11 @@ y1^y2
 rastfile <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA")
 rastersentinel <- rast(rastfile)
 
+# CALCULATE OF THE DVI
+dvi2023 = recentjpg[[1]] - recentjpg [[2]]
+dvi2023
+cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Plot a colour scheme for the DVI
+plot(dvi2023, col=cl)
 
 install.packages("readr")
 library(readr)
