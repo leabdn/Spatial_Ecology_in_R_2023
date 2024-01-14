@@ -3,31 +3,42 @@
 Impact of urbanization on the 
 
 # STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
-# THE OLDER RASTER : 06/07/2015
 install.packages("terra")
 library(terra)
-setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION") # path we we found the .jpg
-olderjpg <- rast("2015-07-06-00_00_2015-07-06-23_59_Sentinel-2_L1C_True_color.jpg") 
-olderjpg # plot the informations of the raster
-plotRGB(olderjpg, r=1, g=2, b=3) # plot the raster in real colours
-# THE MOST RECENT RASTER : 06/07/2023
+setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
 recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
 plotRGB(recentjpg, r=1, g=2, b=3)
 
-# STEP 2. CALCULATE THE DVI AND NDVI TO COMPARE THE EVOLUTION BETWEEN 2015 AND 2023
+# STEP 1. OPEN THE Aeshna affinis DATA (SHAPE FILE OF ITS OCCURENCE)
+install.packages("sdm")
+install.packages("rgdal", dependencies=T) # Not available from the end of 2023
+install.packages("terra")
+library(sdm)
+library(rgdal) # species
+library(terra) # predictors
+file <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION")
+Aeshna <- vect(file) # Insert the shape file
+Aeshna # Informations about geometry data of Aeshna
+plot(Aeshna) # Plot the presence (points) of Aeshna
+
+# STEP 2. CALCULATE THE DVI AND NDVI OF THE RASTER CORRESPONDANT
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
 library(ggplot2) 
 library(viridis)
-dvi2015 = olderjpg[[1]] - olderjpg [[2]]
-dvi2015
 dvi2023 = recentjpg[[1]] - recentjpg [[2]]
 dvi2023
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
-plot(dvi2015, col=cl)
 plot(dvi2023, col=cl)
 
+# STEP 3. CALCULATE THE DVI AND NDVI SENTINEL-2 RASTER CORRESPONDANT
+install.packages("terra")
+library(terra)
+setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
+recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
+plotRGB(recentjpg, r=1, g=2, b=3)
 
+-------------------------------------------------------------------------------------------------------------------------
 # STEP 1. OPEN THE CSV FILE IN R STUDIO (AESHNA AFFINIS OBSERVATIONS)
 install.packages("rio")
 library(rio)
@@ -41,13 +52,36 @@ library(sdm)
 shpfile <- system.file("external/Corridors_terrestres_et_aquatiques.shp", package="sdm")
 shpfile
 
+# STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
+# THE OLDER RASTER : 06/07/2015
+install.packages("terra")
+library(terra)
+setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
+olderjpg <- rast("2015-07-06-00_00_2015-07-06-23_59_Sentinel-2_L1C_True_color.jpg") 
+olderjpg # plot the informations of the raster
+plotRGB(olderjpg, r=1, g=2, b=3) # plot the raster in real colours
+# THE MOST RECENT RASTER : 06/07/2023
+recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
+plotRGB(recentjpg, r=1, g=2, b=3)
 
-# STEP 3. ANALYSE THE POPULATION DISTRIBUTION
-install.packages("SDM")
-install.packages("RGDAL")
-install.packages("TERRA")
+# STEP 3. CALCULATE THE DVI AND NDVI TO COMPARE THE EVOLUTION BETWEEN 2015 AND 2023
+install.packages("ggplot2") # Use colours scales
+install.packages("viridis") # Make the plot more aesthetic
+library(ggplot2) 
+library(viridis)
+dvi2015 = olderjpg[[1]] - olderjpg [[2]]
+dvi2015
+dvi2023 = recentjpg[[1]] - recentjpg [[2]]
+dvi2023
+cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
+plot(dvi2015, col=cl)
+plot(dvi2023, col=cl)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+rastfile <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA")
+rastersentinel <- rast(rastfile)
+
+
 install.packages("readr")
 library(readr)
 mysource <- "C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION"
