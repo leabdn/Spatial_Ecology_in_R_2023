@@ -3,14 +3,21 @@
 As historic gardens, with their specific ecologics characteristics, have an higher level of biodiversity the green spaces in Tours Métropole (Indre-et-Loire department, France) ?
 
 # STEP 1. SHOW IF THE OCCURENCE ARE FAR FROM THE HISTORIC GARDENS AND THE GREEN SPACES IN THE TWO YEARS (HYPOTHESIS)
-
-# OPEN THE data_Aeshna_affinis.shp FILE
+# OPEN THE Autographa_gamma.shp FILE
 install.packages("terra")
 library(terra)
-fileA <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AESHNA")
-Aeshna <- vect(file) # Insert the shape file
-Aeshna # Informations about geometry data of Aeshna
-plot(Aeshna) # Plot the presence (points) of Aeshna
+fileA <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AUTOGRAPHA")
+Autographa <- vect(file) # Insert the shape file
+Autographa # Informations about geometry data of Autographa
+plot(Autographa) # Plot the presence (points) of Autographa
+
+# ADD THE Camptogramma_bilineata.shp FILE
+install.packages("terra")
+library(terra)
+fileC <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AUTOGRAPHA")
+Camptogramma <- vect(file) # Insert the shape file
+Camptogramma # Informations about geometry data of Camptogramma
+plot(Camptogramma) # Plot the presence (points) of Camptogramma
 
 # ADD THE historicgardens.shp FILE ON THE GRAPH
 fileHG <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/HISTORIC GARDENS")
@@ -18,19 +25,9 @@ Historicgardens <- vect(file) # Insert the shape file
 Historicgardens # Informations about geometry data of the Historic gardens
 points(Historicgardens, col = "red")
 
-# ADD THE gardensspaces.shp FILE ON THE GRAPH
-fileGS <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/GARDEN_SPACES")
-Gardensspaces <- vect(file) # Insert the shape file
-Gardensspaces # Informations about geometry data of Garden spaces
-points(Gardensspaces, col = "red")
-
-
-# PLOT THE DATA IN THE SAME 
-
-
 # STEP 2. CALCULATIONS OF COMPLEMENTARY VEGETATION AND WATER INDEX (COMPARISON IN 2020 AND 2021) : THE NDVI AND THE NDWI TO EVALUATE THIS LINK
 
-# CALCULATE THE NDVI
+# CALCULATE THE NDVI FOR 2020 AND 2021
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
 install.packages("devtools")
@@ -44,27 +41,50 @@ library(terra) # predictors
 devtools::install_github("ducciorocchini/imageRy")
 library(imageRy)
 setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
-recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
-redband <- im.plotRGB(recentjpg, 1, 2, 3) # Red band
-blueband <- im.plotRGB(recentjpg, 2, 3, 1) # Blue band
-greenband <- im.plotRGB(recentjpg, 2, 1, 3) # Green band
-ndvi2023 = (recentjpg[[1]] - recentjpg[[2]]) / (recentjpg[[1]] + recentjpg[[2]]) # (NIR-RED) / (NIR+RED)
-ndvi2023
-cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
-plot(ndvi2023, col=cl)
+# 2020
+2020jpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
+redband <- im.plotRGB(2020jpg, 1, 2, 3) # Red band
+blueband <- im.plotRGB(2020jpg, 2, 3, 1) # Blue band
+greenband <- im.plotRGB(2020jpg, 2, 1, 3) # Green band
+ndvi2020 = (2020jpg[[1]] - 2020jpg[[2]]) / (2020jpg[[1]] + 2020jpg[[2]]) # (NIR-RED) / (NIR+RED)
+ndvi2020
+cl1 <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
+plot(ndvi2020, col=cl1)
+# 2021
+2021jpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
+redband <- im.plotRGB(2021jpg, 1, 2, 3) # Red band
+blueband <- im.plotRGB(2021jpg, 2, 3, 1) # Blue band
+greenband <- im.plotRGB(2021jpg, 2, 1, 3) # Green band
+ndvi2021 = (2021jpg[[1]] - 2021jpg[[2]]) / (2021jpg[[1]] + 2021jpg[[2]]) # (NIR-RED) / (NIR+RED)
+ndvi2021
+cl2 <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
+plot(ndvi2021, col=cl2)
 
-# CALCULATION OF THE NDWI
+# CALCULATION OF THE NDWI FOR 2020 AND 2021
+# 2020
+ndwi2020 = (2020jpg[[3]] - 2020jpg[[1]]) / (2020jpg[[3]] + 2020jpg[[1]])
+ndwi2020
+c1 <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
+plot(ndwi2023, col = c1)
+# 2021
 ndwi2023 = (recentjpg[[3]] - recentjpg[[1]]) / (recentjpg[[3]] + recentjpg[[1]])
 ndwi2023
-c <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
-plot(ndwi2023, col = c)
+c2 <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
+plot(ndwi2023, col = c2)
 
-# STEP 3. CORRELATIONS BETWEEN INDICES (FOR HISTORIC GARDENS AND GREENSPACES) AND OCCURENCE OF Aeshna affinis (during the oral)
+# STEP 3. CORRELATIONS BETWEEN INDICES (FOR HISTORIC GARDENS AND GREENSPACES) AND OCCURENCE OF ? (during the oral)
 
 
 
 
 -------------------------------------------------------------------------------------------------------------------------
+
+# ADD THE gardensspaces.shp FILE ON THE GRAPH
+fileGS <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/GARDEN_SPACES")
+Gardensspaces <- vect(file) # Insert the shape file
+Gardensspaces # Informations about geometry data of Garden spaces
+points(Gardensspaces, col = "red")
+
 cgray <- colorRampPalette(c("black", "dark gray", "gray")) (100) # Bands in grey
 plot(ndwi2023, col = cgray)
 
