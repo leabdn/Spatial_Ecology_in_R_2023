@@ -1,8 +1,36 @@
 # PROBLEMATIC CHOSEN
 # To what extent does the creation of ecological corridors (rivers) affect the presence of Aeshna affinis in the Centre-Val-de-Loire french region ?
-Impact of urbanization on the 
+As historic gardens, with their specific ecologics characteristics, have an higher level of biodiversity the green spaces in Tours Métropole (Indre-et-Loire department, France) ?
 
-# STEP 1. CALCULATE THE NDVI OF THE RASTER
+# STEP 1. SHOW IF THE OCCURENCE ARE FAR FROM THE HISTORIC GARDENS AND THE GREEN SPACES IN THE TWO YEARS (HYPOTHESIS)
+
+# OPEN THE data_Aeshna_affinis.shp FILE
+install.packages("terra")
+library(terra)
+fileA <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AESHNA")
+Aeshna <- vect(file) # Insert the shape file
+Aeshna # Informations about geometry data of Aeshna
+plot(Aeshna) # Plot the presence (points) of Aeshna
+
+# ADD THE historicgardens.shp FILE ON THE GRAPH
+fileHG <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/HISTORIC GARDENS")
+Historicgardens <- vect(file) # Insert the shape file
+Historicgardens # Informations about geometry data of the Historic gardens
+points(Historicgardens, col = "red")
+
+# ADD THE gardensspaces.shp FILE ON THE GRAPH
+fileGS <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/GARDEN_SPACES")
+Gardensspaces <- vect(file) # Insert the shape file
+Gardensspaces # Informations about geometry data of Garden spaces
+points(Gardensspaces, col = "red")
+
+
+# PLOT THE DATA IN THE SAME 
+
+
+# STEP 2. CALCULATIONS OF COMPLEMENTARY VEGETATION AND WATER INDEX (COMPARISON IN 2020 AND 2021) : THE NDVI AND THE NDWI TO EVALUATE THIS LINK
+
+# CALCULATE THE NDVI
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
 install.packages("devtools")
@@ -12,7 +40,7 @@ library(ggplot2)
 library(viridis)
 library(devtools)
 library(htmltools)
-library(terra)
+library(terra) # predictors
 devtools::install_github("ducciorocchini/imageRy")
 library(imageRy)
 setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
@@ -25,26 +53,20 @@ ndvi2023
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
 plot(ndvi2023, col=cl)
 
-# STEP 2. CALCULATION OF THE NDWI
+# CALCULATION OF THE NDWI
 ndwi2023 = (recentjpg[[3]] - recentjpg[[1]]) / (recentjpg[[3]] + recentjpg[[1]])
 ndwi2023
-plot(ndwi2023, col = cl)
+c <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
+plot(ndwi2023, col = c)
 
-# STEP 3. OPEN THE Aeshna affinis DATA (SHAPE FILE OF ITS OCCURENCE) ON THE RASTER
-install.packages("sdm")
-install.packages("rgdal", dependencies=T) # Not available from the end of 2023
-install.packages("terra")
-library(sdm)
-library(rgdal) # species
-library(terra) # predictors
-file <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION")
-Aeshna <- vect(file) # Insert the shape file
-Aeshna # Informations about geometry data of Aeshna
-plot(Aeshna) # Plot the presence (points) of Aeshna
+# STEP 3. CORRELATIONS BETWEEN INDICES (FOR HISTORIC GARDENS AND GREENSPACES) AND OCCURENCE OF Aeshna affinis (during the oral)
 
-# STEP 4. CORRELATIONS BETWEEN INDICES AND OCCURENCE OF Aeshna affinis (during the oral)
+
+
 
 -------------------------------------------------------------------------------------------------------------------------
+cgray <- colorRampPalette(c("black", "dark gray", "gray")) (100) # Bands in grey
+plot(ndwi2023, col = cgray)
 
 # STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
 install.packages("terra")
@@ -90,6 +112,12 @@ dvi2023
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
 plot(dvi2015, col=cl)
 plot(dvi2023, col=cl)
+
+# NDWI WITH LANDSAT DATA (not possible to download finally)
+b8 <- # NIR FROM SENTINEL (TIF FORMAT)
+b13 <- # MIR FROM SENTINEL (TIF FORMAT)
+cgrey <- colorRampPalette(c("black", "dark gray", "gray")) (100) # Bands in grey
+ndwi2023 = ((b8-b13)/(b8+b13)) # NDWI = (NIR-MIR) / NIR+MIR)
 
 # CALCULATE THE NDWI
 install.packages("raster")
