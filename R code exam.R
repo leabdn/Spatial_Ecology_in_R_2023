@@ -1,6 +1,5 @@
 # PROBLEMATIC CHOSEN
-# To what extent does the creation of ecological corridors (rivers) affect the presence of Aeshna affinis in the Centre-Val-de-Loire french region ?
-As historic gardens, with their specific ecologics characteristics, have an higher level of biodiversity the green spaces in Tours Métropole (Indre-et-Loire department, France) ?
+# Are the historic gardens, with their specific ecologics characteristics, are in Tours Métropole (Indre-et-Loire department, France) ?
 
 # STEP 1. SHOW IF THE OCCURENCE ARE FAR FROM THE HISTORIC GARDENS AND THE GREEN SPACES IN THE TWO YEARS (HYPOTHESIS)
 # OPEN THE Autographa_gamma.shp FILE
