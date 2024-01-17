@@ -1,7 +1,7 @@
 # PROBLEMATIC CHOSEN
 # Face to the heatwaves and urban heat island phenomenon, how qualify the resilience of ecosystems hosting Calopteryx virgo ?
 
-# STEP 1. CALCULATION OF THE NDVI (VEGETATION INDEX), NDWI (WATER INDEX) and NDTI (POND INDEX) INDEX AND CUTTING THE RASTER FILE OBTAINED
+# STEP 1. CALCULATION OF THE NDVI (VEGETATION INDEX), NDWI (WATER INDEX) and NDPI (POND INDEX) INDEX AND CUTTING THE RASTER FILE OBTAINED
 # CALCULATE THE NDVI FOR 2020 AND 2021
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
@@ -33,7 +33,7 @@ ndwi2020
 c <- colorRampPalette(c("lightgreen", "chartreuse", "green", "darkgreen")) (100)
 plot(ndwi2020, col = c)
 
-# CALCULATION OF THE NDTI FOR 2020 AND 2021
+# CALCULATION OF THE NDPI FOR 2020 AND 2021
 # 2020
 ...
 dev.off()
