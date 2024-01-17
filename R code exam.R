@@ -1,45 +1,21 @@
 # PROBLEMATIC CHOSEN
-# Are the historic gardens, with their specific ecologics characteristics, are in Tours Métropole (Indre-et-Loire department, France) ?
+# Face to the heatwaves and urban heat island phenomenon, how qualify the resilience of ecosystems hosting Calopteryx virgo ?
 
-# STEP 1. SHOW IF THE OCCURENCE ARE FAR FROM THE HISTORIC GARDENS AND THE GREEN SPACES IN THE TWO YEARS (HYPOTHESIS)
-# OPEN THE Autographa_gamma.shp FILE
-install.packages("terra")
-library(terra)
-fileA <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AUTOGRAPHA")
-Autographa <- vect(file) # Insert the shape file
-Autographa # Informations about geometry data of Autographa
-plot(Autographa) # Plot the presence (points) of Autographa
-
-# ADD THE Camptogramma_bilineata.shp FILE
-install.packages("terra")
-library(terra)
-fileC <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/AUTOGRAPHA")
-Camptogramma <- vect(file) # Insert the shape file
-Camptogramma # Informations about geometry data of Camptogramma
-plot(Camptogramma) # Plot the presence (points) of Camptogramma
-
-# ADD THE historicgardens.shp FILE ON THE GRAPH
-fileHG <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/HISTORIC GARDENS")
-Historicgardens <- vect(file) # Insert the shape file
-Historicgardens # Informations about geometry data of the Historic gardens
-points(Historicgardens, col = "red")
-
-# STEP 2. CALCULATIONS OF COMPLEMENTARY VEGETATION AND WATER INDEX (COMPARISON IN 2020 AND 2021) : THE NDVI AND THE NDWI TO EVALUATE THIS LINK
-
+# STEP 1. CALCULATION OF THE NDVI (VEGETATION INDEX), NDWI (WATER INDEX) and NDTI (POND INDEX) INDEX AND CUTTING THE RASTER FILE OBTAINED
 # CALCULATE THE NDVI FOR 2020 AND 2021
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
 install.packages("devtools")
-install.packages("htmltools") # Have the last version of devtools
+install.packages("htmltools") # Have the last version of devtools ???????????  
 install.packages("terra")
+devtools::install_github("ducciorocchini/imageRy")
+library(imageRy)
 library(ggplot2) 
 library(viridis)
 library(devtools)
 library(htmltools)
-library(terra) # predictors
-devtools::install_github("ducciorocchini/imageRy")
-library(imageRy)
-setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
+library(terra) # Predictors
+setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL REPORT/COPERNICUS") # path we we found the .jpg
 # 2020
 2020jpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
 redband <- im.plotRGB(2020jpg, 1, 2, 3) # Red band
@@ -47,65 +23,46 @@ blueband <- im.plotRGB(2020jpg, 2, 3, 1) # Blue band
 greenband <- im.plotRGB(2020jpg, 2, 1, 3) # Green band
 ndvi2020 = (2020jpg[[1]] - 2020jpg[[2]]) / (2020jpg[[1]] + 2020jpg[[2]]) # (NIR-RED) / (NIR+RED)
 ndvi2020
-cl1 <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
+c <- colorRampPalette(c("lightgreen", "chartreuse", "green", "darkgreen")) (100) # Specifying a colour scheme
 plot(ndvi2020, col=cl1)
-# 2021
-2021jpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
-redband <- im.plotRGB(2021jpg, 1, 2, 3) # Red band
-blueband <- im.plotRGB(2021jpg, 2, 3, 1) # Blue band
-greenband <- im.plotRGB(2021jpg, 2, 1, 3) # Green band
-ndvi2021 = (2021jpg[[1]] - 2021jpg[[2]]) / (2021jpg[[1]] + 2021jpg[[2]]) # (NIR-RED) / (NIR+RED)
-ndvi2021
-cl2 <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
-plot(ndvi2021, col=cl2)
 
-# CALCULATION OF THE NDWI FOR 2020 AND 2021
+# CALCULATION OF THE NDWI FOR 2020
 # 2020
 ndwi2020 = (2020jpg[[3]] - 2020jpg[[1]]) / (2020jpg[[3]] + 2020jpg[[1]])
 ndwi2020
-c1 <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
-plot(ndwi2023, col = c1)
-# 2021
-ndwi2023 = (recentjpg[[3]] - recentjpg[[1]]) / (recentjpg[[3]] + recentjpg[[1]])
-ndwi2023
-c2 <- colorRampPalette(c("darkblue", "blue", "green", "yellow")) (100)
-plot(ndwi2023, col = c2)
+c <- colorRampPalette(c("lightgreen", "chartreuse", "green", "darkgreen")) (100)
+plot(ndwi2020, col = c)
 
-# STEP 3. CORRELATIONS BETWEEN INDICES (FOR HISTORIC GARDENS AND GREENSPACES) AND OCCURENCE OF ? (during the oral)
+# CALCULATION OF THE NDTI FOR 2020 AND 2021
+# 2020
+...
+dev.off()
 
+# STEP 2. ADD THE OCCURENCES OF CALOPTERYX VIRGO ON THE RASTER OBTAINED
+# OPEN THE C_virgo.shp FILE
+install.packages("terra")
+library(terra)
+fileA <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL REPORT/CALOPTERYX_VIRGO")
+C_virgo <- vect(file) # Insert the shape file
+C_virgo # Informations about geometry data of Calopteryx virgo
+# PLOT THE OCCURENCES ON THE 3 RASTERS (NDVI, NDWI AND NDTI)
+plot(ndvi2020) # Plot the presence (points) of Calopteryx virgo
+points(C_virgo, cex=.5) # Plot the presence (points) of Calopteryx virgo on the raster
+plot(ndwi2020) # Plot the presence (points) of Calopteryx virgo
+points(C_virgo, cex=.5) # Plot the presence (points) of Calopteryx virgo on the raster
+plot(ndti2020) # Plot the presence (points) of Calopteryx virgo
+points(C_virgo, cex=.5) # Plot the presence (points) of Calopteryx virgo on the raster
 
-
+# STEP 3. ANALYSE OF THE POPULATION DISTRIBUTION OF CALOPTERYX VIRGO CARACTERISTICS AND CARACTERISTICS OF THE EXOSYSTEMS HIGHLIGHTED
+# Explained during the oral
 
 -------------------------------------------------------------------------------------------------------------------------
-
-# ADD THE gardensspaces.shp FILE ON THE GRAPH
-fileGS <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/GARDEN_SPACES")
-Gardensspaces <- vect(file) # Insert the shape file
-Gardensspaces # Informations about geometry data of Garden spaces
-points(Gardensspaces, col = "red")
-
-cgray <- colorRampPalette(c("black", "dark gray", "gray")) (100) # Bands in grey
-plot(ndwi2023, col = cgray)
-
 # STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
 install.packages("terra")
 library(terra)
 setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA") # path we we found the .jpg
 recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
 plotRGB(recentjpg, r=1, g=2, b=3)
-
-# STEP 1. OPEN THE CSV FILE IN R STUDIO (AESHNA AFFINIS OBSERVATIONS)
-install.packages("rio")
-library(rio)
-path <- "C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION/data_Aeshna_affinis.xlsx"
-data <- import_list(path)
-print (data)
-
-# STEP 2. OPEN THE SHP FILE IN R STUDIO (RIVERS)
-install.packages("sdm")
-library(sdm)
-shpfile <- system.file("external/Corridors_terrestres_et_aquatiques.shp", package="sdm")
-shpfile
 
 # STEP 1. OPEN THE SENTINEL-2 DATA IN R STUDIO
 # THE OLDER RASTER : 06/07/2015
@@ -115,37 +72,11 @@ setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESE
 olderjpg <- rast("2015-07-06-00_00_2015-07-06-23_59_Sentinel-2_L1C_True_color.jpg") 
 olderjpg # plot the informations of the raster
 plotRGB(olderjpg, r=1, g=2, b=3) # plot the raster in real colours
+
 # THE MOST RECENT RASTER : 06/07/2023
 recentjpg <- rast("2023-07-07-00_00_2023-07-07-23_59_Sentinel-2_L1C_True_color.jpg")
 plotRGB(recentjpg, r=1, g=2, b=3)
 
-# STEP 3. CALCULATE THE DVI AND NDVI TO COMPARE THE EVOLUTION BETWEEN 2015 AND 2023
-install.packages("ggplot2") # Use colours scales
-install.packages("viridis") # Make the plot more aesthetic
-library(ggplot2) 
-library(viridis)
-dvi2015 = olderjpg[[1]] - olderjpg [[2]]
-dvi2015
-dvi2023 = recentjpg[[1]] - recentjpg [[2]]
-dvi2023
-cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Specifying a colour scheme
-plot(dvi2015, col=cl)
-plot(dvi2023, col=cl)
-
-# NDWI WITH LANDSAT DATA (not possible to download finally)
-b8 <- # NIR FROM SENTINEL (TIF FORMAT)
-b13 <- # MIR FROM SENTINEL (TIF FORMAT)
-cgrey <- colorRampPalette(c("black", "dark gray", "gray")) (100) # Bands in grey
-ndwi2023 = ((b8-b13)/(b8+b13)) # NDWI = (NIR-MIR) / NIR+MIR)
-
-# CALCULATE THE NDWI
-install.packages("raster")
-install.packages("rgdal")
-library (raster)
-library (rgdal)
-path <- system.file ("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA/NDWI", package = "ASIP") # Path to access at recentjpg
-shapefile <- paste0 (path, "/test.shp")
-ndwi2023 <- ndwi (directory = path, crop = "y", ext2crop = shapefile)
 # (BIRGHTNESS INDEX), BI = root((Red²+Green²)/2)
 x1 <- recentjpg[[1]] # NIR
 y1 <- 2
@@ -155,22 +86,9 @@ y2 <- 2
 y1^y2
 # The power
 
---------------------------------------------------------------------------------------------------------------------------------------------
-rastfile <- setwd("C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/FINAL PRESENTATION/DATA")
-rastersentinel <- rast(rastfile)
-
 # CALCULATE OF THE DVI
 dvi2023 = recentjpg[[1]] - recentjpg [[2]]
 dvi2023
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) # Plot a colour scheme for the DVI
 plot(dvi2023, col=cl)
-
-install.packages("readr")
-library(readr)
-mysource <- "C:/Users/leabd/Documents/Erasmus courses/SPATIAL ECOLOGY IN R/PRESENTATION"
-file = paste0(mysource,"data_Aeshna_affinis_csv")
-header = TRUE
-sep = ",",
-stringsAsFactors = TRUE
-str("data_Aeshna_affinis_csv")
 
