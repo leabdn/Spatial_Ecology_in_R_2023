@@ -1,13 +1,14 @@
 # PROBLEMATIC CHOSEN
-# Face to the heatwaves and urban heat island phenomenon, how qualify the resilience of ecosystems in Indre-et-Loire department (France) ?
+# Which effets on the ecosystems had the heatwave of July 2021 in the urban area of Tours (France) ?
 
-# STEP 1. CALCULATION OF THE NDVI (VEGETATION INDEX), NDWI (WATER INDEX) and NDPI (POND INDEX) INDEX 
+# STEP 1. CALCULATION OF THE NDVI (VEGETATION INDEX), NDWI (WATER INDEX) 
 # CALCULATE THE NDVI FOR 2021
 install.packages("ggplot2") # Use colours scales
 install.packages("viridis") # Make the plot more aesthetic
 install.packages("devtools") # Speed up tasks 
-install.packages("terra") # Spatial analyse with vectors, Predictors
-devtools::install_github("ducciorocchini/imageRy")
+install.packages("terra") # Spatial analyse with vectors, predictors
+devtools::install_github("ducciorocchini/imageRy") # Image in 4D
+
 library(imageRy)
 library(ggplot2) 
 library(viridis)
@@ -34,23 +35,14 @@ dev.off()
 # CALCULATION OF THE NDWI FOR 2021
 ndwi2021 = (jpg2021[[3]] - jpg2021[[1]]) / (jpg2021[[3]] + jpg2021[[1]]) # NDWI (McFEETERS) = (Green-NIR) / (Green+NIR)
 c2 <- colorRampPalette(c("darkslategray1", "cyan4", "blue", "darkblue")) (100)
+
 # CALCULATION OF THE NDWI FOR 2023
 ndwi2023 = (jpg2023[[3]] - jpg2023[[1]]) / (jpg2023[[3]] + jpg2023[[1]]) # NDWI (McFEETERS) = (Green-NIR) / (Green+NIR)
+
 # PLOT AND COMPARE THE NDWI FOR THE TWO PERIODS
 par(mfrow=c(2,1))
 plot(ndwi2021, col = c2)
 plot(ndwi2023, col = c2)
-dev.off()
-
-# CALCULATION OF THE CI FOR 2021
-ci2021 = (jpg2021[[2]] - jpg2021[[3]]) / (jpg2021[[2]] + jpg2021[[3]]) # CI = (Red-Green) / (Red+Green)
-c3 <- colorRampPalette(c("white", "azure", "darkslategray", "black")) (100)
-# CALCULATION OF THE CI FOR 2023
-ci2023 = (jpg2023[[2]] - jpg2023[[3]]) / (jpg2023[[2]] + jpg2023[[3]]) # CI = (Red-Green) / (Red+Green)
-# PLOT AND COMPARE THE CI FOR THE TWO PERIODS
-par(mfrow=c(2,1))
-plot(ci2023, col = c3)
-plot(ci2023, col = c3)
 dev.off()
 
 -------------------------------------------------------------------------------------------------------------------------------
@@ -70,5 +62,5 @@ datframe_ndvi <- as.data.frame(ndvicrop, xy = TRUE)
 plot(ndvicrop)
 points(C_virgo, cex =.5)
 
-# Same procedure for the NDWI and the CI.
+# Same procedure for the NDWI.
 
